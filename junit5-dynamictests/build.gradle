@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+group 'com.github.sormuras.sandbox'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    testCompile 'com.github.junit-team.junit5:junit-jupiter-api:issues~1178-with-testsource-SNAPSHOT'
+    testRuntime 'com.github.junit-team.junit5:junit-jupiter-engine:issues~1178-with-testsource-SNAPSHOT'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+wrapper {
+    gradleVersion = '4.8-rc-1'
+}
