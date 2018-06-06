@@ -1,2 +1,4 @@
-# IDEA
 .idea/
+.gradle/
+build/
+target/
