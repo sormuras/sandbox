@@ -1,0 +1,4 @@
+jdk: oraclejdk9
+
+install:
+- cd sors-test-module-processor && ./gradlew install -x test
