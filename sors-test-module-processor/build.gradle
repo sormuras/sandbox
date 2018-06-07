@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+    id 'maven'
+}
+
+group 'com.github.sormuras.sandbox'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}
+
+test {
+    useJUnitPlatform()
+}
+
+wrapper {
+    gradleVersion = '4.8'
+}
