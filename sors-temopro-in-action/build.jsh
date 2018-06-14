@@ -3,6 +3,7 @@
 var dependencies = Paths.get("dependencies")
 var mains = List.of(Paths.get("modules"))
 var tests = List.of(Paths.get("modules-test"))
+var generated = Paths.get("modules-test-generated")
 
 var bach = new Bach()
 
@@ -17,11 +18,13 @@ bach.util.download(URI.create("http://central.maven.org/maven2/org/apiguardian/a
 
 bach.util.download(URI.create("https://jitpack.io/com/github/sormuras/sors-test-module-processor/master-SNAPSHOT/sors-test-module-processor-master-SNAPSHOT.jar"), dependencies)
 
+Files.createDirectories(generated)
+
 var processOnly = bach.command("javac", "-proc:only", "-verbose", "-Werror")
 processOnly.addAll("--module-path", dependencies)
-processOnly.addAll("--processor-module-path", dependencies) // "dependencies/sors-test-module-processor-master-SNAPSHOT.jar"
-processOnly.addAll("--add-modules", "de.sormuras.sors.temopro")
-processOnly.addAll("-s", "modules-test-generated/foo")
+processOnly.addAll("--processor-module-path", dependencies)
+processOnly.addAll("--add-modules", "de.sormuras.sors.testmodule")
+processOnly.addAll("-s", generated.resolve("foo"))
 processOnly.add("modules-test/foo/foo/package-info.java")
 processOnly.run()
 
@@ -29,7 +32,7 @@ var javac = new JdkTool.Javac()
 javac.verbose = true
 javac.destination = Paths.get("target", "test")
 javac.modulePath = List.of(dependencies)
-javac.moduleSourcePath = List.of(Paths.get("modules-test"), Paths.get("modules-test-generated"))
+javac.moduleSourcePath = List.of(Paths.get("modules-test"), generated)
 javac.patchModule = bach.util.getPatchMap(tests, mains)
 bach.run(javac)
 

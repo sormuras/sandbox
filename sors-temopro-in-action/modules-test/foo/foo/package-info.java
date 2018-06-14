@@ -1,8 +1,7 @@
-@de.sormuras.sors.temopro.TestModule({
-  "open module foo {",
-  "  requires de.sormuras.sors.temopro;",
-  "  requires org.junit.jupiter.api;",
-  "}",
-  ""
-})
+@de.sormuras.sors.testmodule.TestModule(
+    mainModuleDescriptorPath = "modules/foo",
+    value = { //
+      "  requires de.sormuras.sors.testmodule;", //
+      "  requires org.junit.jupiter.api;" //
+    })
 package foo;

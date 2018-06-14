@@ -1,3 +1,3 @@
 module foo {
-  // empty
+  exports foo;
 }
