@@ -1,4 +1,10 @@
+//
+// jshell build-compile-false.jsh
+//
+
 /open https://github.com/sormuras/bach/raw/master/src/bach/Bach.java
+
+var ok = 0
 
 var dependencies = Paths.get("dependencies")
 var mains = List.of(Paths.get("modules"))
@@ -33,31 +39,17 @@ javacMain.moduleSourcePath = mains
 bach.run(javacMain)
 
 //
-// test
+// process-only test
 //
-
 Files.createDirectories(generated)
-
 var processOnly = bach.command("javac", "-proc:only", "-verbose", "-Werror")
-
 processOnly.addAll("-s", generated.resolve("foo"))   // compile = false
 processOnly.addAll("-d", target.resolve("test/foo")) // compile = true
-
 processOnly.addAll("--module-path", dependencies)
 processOnly.addAll("--add-modules", "ALL-MODULE-PATH")
-//processOnly.addAll("--add-modules", "de.sormuras.sors.testmodule")
-//processOnly.addAll("--add-modules", "org.objectweb.asm")
-
-// ? processOnly.addAll("-processor", "de.sormuras.sors.testmodule/de.sormuras.sors.testmodule.processor.TestModuleProcessor")
 processOnly.addAll("--processor-module-path", dependencies)
-
-//processOnly.add("-J--module-path=" + dependencies)
-//processOnly.add("-J--add-modules=ALL-MODULE-PATH") // pass all modules to the processor
-//processOnly.add("-J--add-modules=de.sormuras.sors.testmodule")
-//processOnly.add("-J--add-modules=org.objectweb.asm")
-
 processOnly.add("modules-test/foo/foo/package-info.java")
-var ok = processOnly.get() // like .run()
+ok = processOnly.get()
 
 //
 // compile test module
@@ -71,7 +63,7 @@ if (ok == 0) {
   javac.patchModule = bach.util.getPatchMap(tests, mains);
   var compiler = javac.toCommand(bach);
   compiler.arguments.removeIf(arg -> arg.endsWith("package-info.java")); // exclude from compilation
-  compiler.run();
+  ok = compiler.get();
 }
 
 //

@@ -1,6 +1,6 @@
 @de.sormuras.sors.testmodule.TestModule(
     // target mode
-    compile = false,
+    compile = true,
 
     // compile = false
     mainModuleDescriptorSource = "modules/foo", // module-info.java
