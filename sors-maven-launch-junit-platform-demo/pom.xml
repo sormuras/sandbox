@@ -28,6 +28,14 @@
 
   </dependencies>
 
+  <!-- Remove block when the plugin hits central. -->
+  <pluginRepositories>
+    <pluginRepository>
+      <id>bintray-sormuras-maven</id>
+      <url>hhttps://dl.bintray.com/sormuras/maven/</url>
+    </pluginRepository>
+  </pluginRepositories>
+
   <build>
     <plugins>
 
