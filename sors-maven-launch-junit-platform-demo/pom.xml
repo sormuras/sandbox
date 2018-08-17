@@ -28,22 +28,13 @@
 
   </dependencies>
 
-  <pluginRepositories>
-    <pluginRepository>
-      <id>jitpack.io</id>
-      <url>https://jitpack.io</url>
-    </pluginRepository>
-  </pluginRepositories>
-
   <build>
     <plugins>
 
       <plugin>
-
-        <groupId>com.github.sormuras</groupId>
+        <groupId>de.sormuras</groupId>
         <artifactId>junit-platform-maven-plugin</artifactId>
-        <version>master-SNAPSHOT</version>
-
+        <version>0.0.1</version>
         <executions>
           <execution>
             <id>launch</id>
