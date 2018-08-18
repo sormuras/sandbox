@@ -34,7 +34,7 @@
       <plugin>
         <groupId>de.sormuras</groupId>
         <artifactId>junit-platform-maven-plugin</artifactId>
-        <version>0.0.3</version>
+        <version>0.0.4</version>
         <executions>
           <execution>
             <id>launch</id>
