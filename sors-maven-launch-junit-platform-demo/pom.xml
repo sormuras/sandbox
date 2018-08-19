@@ -69,7 +69,7 @@
         <executions>
           <execution>
             <id>default-test</id>
-            <phase>${maven.surefire.phase}</phase>
+            <phase>none</phase>
           </execution>
         </executions>
       </plugin>
