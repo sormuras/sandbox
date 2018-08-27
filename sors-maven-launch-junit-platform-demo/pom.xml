@@ -15,6 +15,13 @@
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
+  <repositories>
+    <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+    </repository>
+  </repositories>
+
   <dependencies>
 
     <!-- Add test compile dependencies here. -->
@@ -26,6 +33,13 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>com.github.testng-team</groupId>
+      <artifactId>testng-junit5</artifactId>
+      <version>master-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -34,7 +48,7 @@
       <plugin>
         <groupId>de.sormuras</groupId>
         <artifactId>junit-platform-maven-plugin</artifactId>
-        <version>0.0.6</version>
+        <version>0.0.8</version>
         <configuration>
           <skip>false</skip>
         </configuration>
@@ -47,18 +61,6 @@
             </goals>
           </execution>
         </executions>
-
-        <!-- Add matching TestEngine implementations to the runtime. -->
-
-        <dependencies>
-          <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.3.0-RC1</version>
-            <scope>runtime</scope>
-          </dependency>
-        </dependencies>
-
       </plugin>
 
       <!-- Disable Surefire by binding its 'default-test' goal to phase 'none' -->
