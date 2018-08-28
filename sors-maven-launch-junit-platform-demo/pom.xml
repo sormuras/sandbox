@@ -49,9 +49,6 @@
         <groupId>de.sormuras</groupId>
         <artifactId>junit-platform-maven-plugin</artifactId>
         <version>0.0.8</version>
-        <configuration>
-          <skip>false</skip>
-        </configuration>
         <executions>
           <execution>
             <id>launch</id>
