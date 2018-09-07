@@ -1,0 +1,20 @@
+//
+// Use test "module-info.java" to configure test-runtime
+//
+// open module foo {
+//   exports foo;
+//
+//   requires org.junit.jupiter.api;
+// }
+
+
+//
+// Patch test-runtime
+//
+// Allow deep reflection for test discovery - repeat for each test library you need
+--add-opens
+  foo/foo=org.junit.platform.commons
+
+// "requires org.junit.jupiter.api"
+--add-reads
+  foo=org.junit.jupiter.api
