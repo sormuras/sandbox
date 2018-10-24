@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'eclipse'
+    id 'idea'
 }
 
 group 'com.github.sormuras.sandbox'
@@ -7,18 +9,20 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
-    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
-    testCompile 'com.github.junit-team.junit5:junit-jupiter-api:issues~1178-with-testsource-SNAPSHOT'
-    testRuntime 'com.github.junit-team.junit5:junit-jupiter-engine:issues~1178-with-testsource-SNAPSHOT'
+    testCompile('org.junit.jupiter:junit-jupiter-api:5.3.1')
+    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.3.1')
 }
 
 test {
     useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
 
 wrapper {
-    gradleVersion = '4.8-rc-1'
+    gradleVersion = '4.10.2'
 }
