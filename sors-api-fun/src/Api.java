@@ -5,6 +5,10 @@ import java.lang.annotation.RetentionPolicy;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @interface Api {
-  String value() default "B";
-  enum Status { A, B, C }
+
+  String STATUS_A = "A";
+  String STATUS_B = "B";
+  String STATUS_C = "C";
+
+  String value();
 }
