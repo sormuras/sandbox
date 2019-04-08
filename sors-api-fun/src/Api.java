@@ -6,9 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 @Documented
 @interface Api {
 
-  String STATUS_A = "A";
-  String STATUS_B = "B";
-  String STATUS_C = "C";
+  Status value();
 
-  String value();
+  enum Status {A, B, C}
 }

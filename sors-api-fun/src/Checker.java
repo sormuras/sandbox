@@ -56,6 +56,9 @@ public class Checker extends AbstractProcessor {
       ElementKind kind = apiAnnotated.getKind();
       Api api = apiAnnotated.getAnnotation(Api.class);
       note("Element %s is annotated with %s", apiAnnotated, api);
+      if (api.value() == Api.Status.B) {
+        error(apiAnnotated, "Found error trigger!");
+      }
     }
   }
 }
