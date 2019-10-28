@@ -3,7 +3,7 @@ import java.util.spi.ToolProvider;
 class Build {
   public static void main(String[] args) {
     run("javac", "--version");
-    run("javac", "-d", "bin/classes", "--module-source-path", "src", "--module", "foo", "--release", "11");
+    run("javac", "-d", "bin/classes", "--module-source-path", "src", "--module", "foo", "--release", "" + Runtime.version().feature());
     run("jar", "--create", "--file", "bin/foo.jar", "--module-version", "1.0", "-C", "bin/classes/foo", ".");
     run("jdeps", "--module-path", "bin", "--check", "foo");
     run("jar", "--describe-module", "--file", "bin/foo.jar");
