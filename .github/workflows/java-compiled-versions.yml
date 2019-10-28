@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: 'Checkout'
       uses: actions/checkout@v1
-    - name: 'Set up JDK'
+    - name: "Set up Java ${{ matrix.java }}"
       uses: actions/setup-java@v1
       with:
         java-version: ${{ matrix.java }}
@@ -20,3 +20,14 @@ jobs:
       run: java --version
     - name: 'java Build.java'
       run: cd java-compiled-versions && java Build.java
+  jdk-ea:
+    name: "Java EA"
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+      - uses: actions/checkout@v1
+      - name: 'Install Java EA and build'
+      - run: |
+        wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
+        source install-jdk.sh --feature ea --os linux-x64
+        cd java-compiled-versions && java Build.java
