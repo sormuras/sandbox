@@ -1,12 +1,30 @@
+import java.lang.module.ModuleFinder;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.spi.ToolProvider;
 
 class Build {
-  public static void main(String[] args) {
+  public static void main(String... args) throws Exception {
     run("javac", "--version");
-    run("javac", "-d", "bin/classes", "--module-source-path", "src", "--module", "foo", "--release", "" + Runtime.version().feature());
-    run("jar", "--create", "--file", "bin/foo.jar", "--module-version", "1.0", "-C", "bin/classes/foo", ".");
-    run("jdeps", "--module-path", "bin", "--check", "foo");
-    run("jar", "--describe-module", "--file", "bin/foo.jar");
+
+    // Always recompile the module-info.class file...
+    Files.deleteIfExists(Path.of("bin/classes/foo/module-info.class"));
+
+    if (args.length == 0)
+      run("javac", "-d", "bin/classes", "--module-source-path", "src", "--module", "foo");
+    else
+      run("javac", "-d", "bin/classes", "--module-source-path", "src", "--module", "foo", "--release", args[0]);
+
+    // Creating and using a modular JAR doesn't change the outcome
+    // run("jar", "--create", "--file", "bin/foo.jar", "--module-version", "1.0", "-C", "bin/classes/foo", ".");
+    // run("jar", "--describe-module", "--file", "bin/foo.jar");
+
+    run("jdeps", "--module-path", "bin/classes", "--check", "foo");
+
+    System.out.println(ModuleFinder.of(Path.of("bin/classes")).find("foo").orElseThrow().descriptor());
+
+    // "javap" does not emit the version of "java.base"
+    // run("javap", "bin/classes/foo/module-info.class");
   }
 
   static void run(String name, String... args) {
