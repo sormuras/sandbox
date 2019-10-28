@@ -21,7 +21,6 @@ jobs:
     - name: 'java Build.java'
       run: cd java-compiled-versions && java Build.java
   jdk-ea:
-    name: "Java EA"
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout'
