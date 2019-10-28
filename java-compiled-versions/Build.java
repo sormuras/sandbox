@@ -5,7 +5,7 @@ class Build {
     run("javac", "--version");
     run("javac", "-d", "bin/classes", "--module-source-path", "src", "--module", "foo");
     run("jar", "--create", "--file", "bin/foo.jar", "--module-version", "1.0", "-C", "bin/classes/foo", ".");
-    run("jdeps", "--module-path", "bin", "--check", "foo");
+    run("jdeps", "--module-path", "bin", "--multi-release", "BASE", "--check", "foo");
     run("jar", "--describe-module", "--file", "bin/foo.jar");
   }
 
