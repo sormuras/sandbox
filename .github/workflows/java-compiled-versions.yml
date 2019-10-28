@@ -1,9 +1,9 @@
-name: CI
+name: java-compiled-versions
 
 on: push
 jobs:
   build:
-    name: Java ${{ matrix.java }}"
+    name: "Java ${{ matrix.java }}"
     strategy:
       fail-fast: false
       matrix:
@@ -16,5 +16,7 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: ${{ matrix.java }}
-    - name: 'Build'
+    - name: 'java --version'
+      run: java --version
+    - name: 'java Build.java'
       run: cd java-compiled-versions && java Build.java
