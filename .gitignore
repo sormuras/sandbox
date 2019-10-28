@@ -7,3 +7,4 @@ dependencies/
 target/
 *-generated
 *.jar
+*.iml
