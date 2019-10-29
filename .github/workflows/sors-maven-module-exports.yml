@@ -15,4 +15,4 @@ jobs:
     - name: 'java --version'
       run: java --version
     - name: 'Build using: mvn verify'
-      run: cd sors-maven-module-exports && mvn verify
+      run: cd sors-maven-module-exports && mvn --batch-mode --no-transfer-progress verify
