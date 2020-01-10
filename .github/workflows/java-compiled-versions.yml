@@ -3,19 +3,23 @@ name: java-compiled-versions
 on: push
 jobs:
   build:
-    name: "Java 13"
+    name: "Java 15-ea"
     runs-on: ubuntu-latest
     steps:
     - name: 'Checkout'
       uses: actions/checkout@v1
-    - name: "Set up Java 13"
+    - name: "Set up Java 15-ea"
       uses: actions/setup-java@v1
       with:
-        java-version: 13
+        java-version: 15-ea
     - name: 'java --version'
       run: java --version
     - name: 'java Build.java (no release)'
       run: cd java-compiled-versions && java Build.java
+    - name: 'java Build.java (15)'
+      run: cd java-compiled-versions && java Build.java 15
+    - name: 'java Build.java (14)'
+      run: cd java-compiled-versions && java Build.java 14
     - name: 'java Build.java (13)'
       run: cd java-compiled-versions && java Build.java 13
     - name: 'java Build.java (12)'
