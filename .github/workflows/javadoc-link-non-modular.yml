@@ -1,0 +1,18 @@
+name: java-compiled-versions
+
+on: push
+jobs:
+  build:
+    name: "Javadoc"
+    runs-on: ubuntu-latest
+    steps:
+    - name: 'Checkout'
+      uses: actions/checkout@v2
+    - name: "Set up Java 15-ea"
+      uses: actions/setup-java@v1
+      with:
+        java-version: 15-ea
+    - name: 'java --version'
+      run: java --version
+    - name: 'java Build.java'
+      run: cd javadoc-link-non-modular && java Build.java
