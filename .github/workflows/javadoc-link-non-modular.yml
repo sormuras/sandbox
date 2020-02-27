@@ -1,4 +1,4 @@
-name: java-compiled-versions
+name: javadoc-link-non-modular
 
 on: push
 jobs:
