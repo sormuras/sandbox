@@ -6,4 +6,4 @@
 
 Using javadoc from JDK 15-ea+18-776 yields the wanted links to external API documentation sites.
 
-![123](javadoc-link-non-modular/image.png)
+![123](image.png)
