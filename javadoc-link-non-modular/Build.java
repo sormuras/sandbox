@@ -23,7 +23,7 @@ class Build {
         "--module-path",
         "lib",
         "-link", // ok
-        "https://docs.oracle.com/en/java/javase/11/docs/api",
+        "https://download.java.net/java/early_access/jdk15/docs/api",
         "-link", // ok
         "https://junit.org/junit4/javadoc/4.13",
         "-link", // not ok

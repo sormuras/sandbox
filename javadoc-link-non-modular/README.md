@@ -4,6 +4,6 @@
 
 ## javadoc 15-ea+18-776
 
-Using javadoc from JDK 15-ea+18-776 yields the wanted links to external API documentation sites.
+Using `javadoc` from JDK 15-ea+18-776 yields the wanted links to external API documentation sites.
 
-![123](image.png)
+![javadoc-15-ea+18-776.png](javadoc-15-ea+18-776.png)
