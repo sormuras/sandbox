@@ -6,5 +6,6 @@ build/
 dependencies/
 target/
 *-generated
+*.class
 *.jar
 *.iml

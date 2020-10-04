@@ -1,0 +1,23 @@
+name: java-annotation-on-module
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: 'Check out sources'
+      uses: actions/checkout@v1
+
+    - name: "Set up Java 16-ea"
+      uses: actions/setup-java@v1
+      with:
+        java-version: 16-ea
+
+    - name: 'java --version'
+      run: java --version
+
+    - name: 'java Build.java'
+      run: cd java-annotation-on-module && java Build.java
+      continue-on-error: true
